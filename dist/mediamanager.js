@@ -1,18 +1,18 @@
-import { openBlock as l, createElementBlock as r, createElementVNode as a, renderSlot as b, defineComponent as i, toDisplayString as d, normalizeClass as p, createCommentVNode as _, createBlock as y, withCtx as x, createVNode as c } from "vue";
+import { openBlock as o, createElementBlock as r, createElementVNode as i, renderSlot as p, defineComponent as a, toDisplayString as d, normalizeClass as _, createCommentVNode as b, createBlock as x, withCtx as y, createVNode as c } from "vue";
 const g = (t, s) => {
   const e = t.__vccOpts || t;
-  for (const [o, n] of s)
-    e[o] = n;
+  for (const [l, n] of s)
+    e[l] = n;
   return e;
-}, h = {}, m = { class: "bg-gray-300 h-screen p-24 opacity-50" }, f = { class: "bg-white-100 h-full rounded-xl border-none" };
+}, h = {}, m = { class: "bg-gray-300 h-screen p-24 w-full fixed" }, f = { class: "bg-white-100 h-full rounded-xl border-none" };
 function w(t, s) {
-  return l(), r("div", m, [
-    a("div", f, [
-      b(t.$slots, "default")
+  return o(), r("div", m, [
+    i("div", f, [
+      p(t.$slots, "default")
     ])
   ]);
 }
-const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "border-b-stone-700 flex justify-between py-3 px-8 shadow-lg" }, k = { class: "text-2xl" }, S = /* @__PURE__ */ i({
+const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "flex justify-between py-3 px-8 shadow-lg" }, k = { class: "text-2xl" }, S = /* @__PURE__ */ a({
   __name: "Header",
   props: {
     title: null
@@ -20,15 +20,15 @@ const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "border-b-stone-70
   emits: ["close"],
   setup(t, { emit: s }) {
     const e = t;
-    return (o, n) => (l(), r("div", $, [
-      a("h1", k, d(e.title), 1),
-      a("span", {
+    return (l, n) => (o(), r("div", $, [
+      i("h1", k, d(e.title), 1),
+      i("span", {
         class: "text-xl",
         onClick: n[0] || (n[0] = (u) => s("close"))
       }, "X")
     ]));
   }
-}), B = ["type", "disabled"], C = { key: 0 }, M = /* @__PURE__ */ i({
+}), B = ["type", "disabled"], C = { key: 0 }, M = /* @__PURE__ */ a({
   __name: "Button",
   props: {
     title: null,
@@ -44,10 +44,10 @@ const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "border-b-stone-70
   emits: ["click"],
   setup(t, { emit: s }) {
     const e = t;
-    return (o, n) => (l(), r("button", {
+    return (l, n) => (o(), r("button", {
       type: e.type,
       disabled: e.disabled,
-      class: p([{
+      class: _([{
         "text-white-100 bg-blue-100": e.btnStyle === "primary",
         "text-blue-100 bg-white-100 border border-blue-100 rounded-2xl": e.btnStyle === "primary-outline",
         "text-white-100 bg-status-success": e.btnStyle === "success",
@@ -60,18 +60,18 @@ const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "border-b-stone-70
       }, "flex items-center justify-center p-4 text-xs cursor-pointer"]),
       onClick: n[0] || (n[0] = (u) => s("click"))
     }, [
-      e.loading === !1 ? (l(), r("span", C, d(e.title), 1)) : _("", !0)
+      e.loading === !1 ? (o(), r("span", C, d(e.title), 1)) : b("", !0)
     ], 10, B));
   }
-}), N = /* @__PURE__ */ i({
+}), N = /* @__PURE__ */ a({
   __name: "MediaManager",
   emits: ["close", "selectImages"],
   setup(t, { emit: s }) {
-    return (e, o) => (l(), y(v, null, {
-      default: x(() => [
+    return (e, l) => (o(), x(v, null, {
+      default: y(() => [
         c(S, {
           title: "MediaManager",
-          onClose: o[0] || (o[0] = (n) => s("close"))
+          onClose: l[0] || (l[0] = (n) => s("close"))
         }),
         c(M, {
           title: "Save",
