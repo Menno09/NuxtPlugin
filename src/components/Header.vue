@@ -12,7 +12,7 @@ const emit = defineEmits<{
 
 <template>
 
-    <div class=" border-b-stone-700 flex justify-between py-3 px-8  shadow-lg">
+    <div class=" flex justify-between py-3 px-8  shadow-lg">
         <h1 class=" text-2xl">{{ props.title }}</h1>
         <span class=" text-xl " @click="emit('close')">X</span>
     </div>
