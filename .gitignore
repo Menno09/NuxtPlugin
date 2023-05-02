@@ -1,0 +1,16 @@
+node_modules
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.DS_Store
+
+# cypress
+cypress/e2e/1-getting-started
+cypress/e2e/2-advanced-examples
+
+# env
+.env
+.idea
+.vscode
