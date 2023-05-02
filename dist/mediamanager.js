@@ -1,34 +1,41 @@
-import { openBlock as o, createElementBlock as r, createElementVNode as i, renderSlot as p, defineComponent as a, toDisplayString as d, normalizeClass as _, createCommentVNode as b, createBlock as x, withCtx as y, createVNode as c } from "vue";
-const g = (t, s) => {
-  const e = t.__vccOpts || t;
-  for (const [l, n] of s)
-    e[l] = n;
-  return e;
-}, h = {}, m = { class: "bg-gray-300 h-screen p-24 w-full fixed" }, f = { class: "bg-white-100 h-full rounded-xl border-none" };
-function w(t, s) {
-  return o(), r("div", m, [
-    i("div", f, [
-      p(t.$slots, "default")
-    ])
-  ]);
-}
-const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "flex justify-between py-3 px-8 shadow-lg" }, k = { class: "text-2xl" }, S = /* @__PURE__ */ a({
+import { defineComponent as i, openBlock as o, createElementBlock as r, normalizeClass as p, createElementVNode as s, renderSlot as _, toDisplayString as b, createCommentVNode as g, createBlock as x, withCtx as y, createVNode as c } from "vue";
+const h = { class: "bg-white-100 h-full rounded-xl border-none flex flex-col" }, f = /* @__PURE__ */ i({
+  __name: "Base",
+  props: {
+    spacing: { type: Boolean }
+  },
+  setup(l) {
+    const n = l;
+    return (e, a) => (o(), r("div", {
+      class: p([
+        "bg-gray-300 h-screen w-full fixed z-30",
+        {
+          "p-24": n.spacing
+        }
+      ])
+    }, [
+      s("div", h, [
+        _(e.$slots, "default")
+      ])
+    ], 2));
+  }
+}), m = { class: "flex justify-between py-3 px-8 shadow-lg" }, w = { class: "text-2xl" }, v = /* @__PURE__ */ i({
   __name: "Header",
   props: {
     title: null
   },
   emits: ["close"],
-  setup(t, { emit: s }) {
-    const e = t;
-    return (l, n) => (o(), r("div", $, [
-      i("h1", k, d(e.title), 1),
-      i("span", {
+  setup(l, { emit: n }) {
+    const e = l;
+    return (a, t) => (o(), r("div", m, [
+      s("h1", w, b(e.title), 1),
+      s("span", {
         class: "text-xl",
-        onClick: n[0] || (n[0] = (u) => s("close"))
+        onClick: t[0] || (t[0] = (d) => n("close"))
       }, "X")
     ]));
   }
-}), B = ["type", "disabled"], C = { key: 0 }, M = /* @__PURE__ */ a({
+}), $ = ["type", "disabled"], S = { key: 0 }, u = /* @__PURE__ */ i({
   __name: "Button",
   props: {
     title: null,
@@ -42,12 +49,12 @@ const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "flex justify-betw
     to: null
   },
   emits: ["click"],
-  setup(t, { emit: s }) {
-    const e = t;
-    return (l, n) => (o(), r("button", {
+  setup(l, { emit: n }) {
+    const e = l;
+    return (a, t) => (o(), r("button", {
       type: e.type,
       disabled: e.disabled,
-      class: _([{
+      class: p([{
         "text-white-100 bg-blue-100": e.btnStyle === "primary",
         "text-blue-100 bg-white-100 border border-blue-100 rounded-2xl": e.btnStyle === "primary-outline",
         "text-white-100 bg-status-success": e.btnStyle === "success",
@@ -58,30 +65,49 @@ const v = /* @__PURE__ */ g(h, [["render", w]]), $ = { class: "flex justify-betw
         "h-10 w-10 rounded-lg": e.square,
         "w-full rounded-xl": !e.square
       }, "flex items-center justify-center p-4 text-xs cursor-pointer"]),
-      onClick: n[0] || (n[0] = (u) => s("click"))
+      onClick: t[0] || (t[0] = (d) => n("click"))
     }, [
-      e.loading === !1 ? (o(), r("span", C, d(e.title), 1)) : b("", !0)
-    ], 10, B));
+      e.loading === !1 ? (o(), r("span", S, b(e.title), 1)) : g("", !0)
+    ], 10, $));
   }
-}), N = /* @__PURE__ */ a({
+}), B = { class: "h-full flex flex-col px-6" }, k = /* @__PURE__ */ s("div", { class: "grid grid-cols-2 gap-4 h-full" }, [
+  /* @__PURE__ */ s("div", null, "01"),
+  /* @__PURE__ */ s("div", null, "09")
+], -1), C = { class: "flex my-6" }, q = /* @__PURE__ */ i({
   __name: "MediaManager",
+  props: {
+    spacing: { type: Boolean }
+  },
   emits: ["close", "selectImages"],
-  setup(t, { emit: s }) {
-    return (e, l) => (o(), x(v, null, {
+  setup(l, { emit: n }) {
+    const e = l;
+    return (a, t) => (o(), x(f, {
+      spacing: e.spacing
+    }, {
       default: y(() => [
-        c(S, {
+        c(v, {
           title: "MediaManager",
-          onClose: l[0] || (l[0] = (n) => s("close"))
+          onClose: t[0] || (t[0] = (d) => n("close"))
         }),
-        c(M, {
-          title: "Save",
-          "btn-style": "success"
-        })
+        s("div", B, [
+          k,
+          s("div", C, [
+            c(u, {
+              title: "Save",
+              "btn-style": "primary"
+            }),
+            c(u, {
+              title: "Save",
+              "btn-style": "success",
+              class: "self-end"
+            })
+          ])
+        ])
       ]),
       _: 1
-    }));
+    }, 8, ["spacing"]));
   }
 });
 export {
-  N as MediaManager
+  q as MediaManager
 };
